@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
 
   def show
     user = User.find_by(id: params[:id])
@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.find_or_create_by(name: params[:name], username: params[:username], password: params[:password])
-    render json: { id: user.id, username: user.username name: user.name}
+    user = User.create(user_params)
+    render json: { id: user.id, username: user.username, name: user.name}
   end
 
   def update
@@ -20,6 +20,12 @@ class UsersController < ApplicationController
       user = User.find_by(id: params[:id])
       user.destroy
       render json: {}, status: :no_content
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :password, :name)
   end
 
 end

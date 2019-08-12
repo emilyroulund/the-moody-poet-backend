@@ -11,7 +11,7 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    favorite = Favorite.find_or_create_by(user_id: params[:user], poem_id: params[:poem)
+    favorite = Favorite.create(user_id: params[:user], poem_id: params[:poem])
     render json: favorite
   end
 

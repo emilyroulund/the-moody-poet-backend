@@ -12,8 +12,8 @@ class PoemsController < ApplicationController
 
 
   def create
-    poem = Poem.find_or_create_by(author: params[:author], classification: params[:classification],
-      period: params[:period], reference: params[:reference]
+    poem = Poem.create(author: params[:author], classification: params[:classification],
+      period: params[:period], reference: params[:reference],
       region: params[:region], text: params[:text], title: params[:title], year: params[:year])
     render json: poem
   end
