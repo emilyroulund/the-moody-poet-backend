@@ -2,16 +2,16 @@ class FavoritesController < ApplicationController
 
   def index
     favorites = Favorite.all
-    render json: favorites, include: [:users, :poems]
+    render json: favorites, include: [:user, :poem]
   end
 
   def show
     favorite = Favorite.find_by(id: params[:id])
-    render json: favorite, include: [:users, :poems]
+    render json: favorite, include: [:user, :poem]
   end
 
   def create
-    favorite = Favorite.create(user_id: params[:user], poem_id: params[:poem])
+    favorite = Favorite.create(user_id: params[:user_id], poem_id: params[:poem_id])
     render json: favorite
   end
 
