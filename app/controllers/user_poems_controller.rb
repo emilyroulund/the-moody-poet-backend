@@ -11,10 +11,11 @@ class UserPoemsController < ApplicationController
   end
 
   def create
-    user_poem = UserPoem.find_or_create_by(author: params[:author],
+    user_poem = UserPoem.create(author: params[:author],
       classification: params[:classification],
       text: params[:text],
-      title: params[:title])
+      title: params[:title],
+      user_id: params[:user_id])
     render json: user_poem
   end
 

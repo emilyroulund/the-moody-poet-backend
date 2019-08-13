@@ -13,7 +13,7 @@ class PoemsController < ApplicationController
 
   def create
     poem = Poem.create(author: params[:author], classification: params[:classification],
-      period: params[:period], reference: params[:reference],
+      keywords: params[:keywords], period: params[:period], reference: params[:reference],
       region: params[:region], text: params[:text], title: params[:title], year: params[:year])
     render json: poem
   end
