@@ -2,7 +2,6 @@ class CreatePoems < ActiveRecord::Migration[5.2]
   def change
       create_table :poems do |t|
             t.string :text, array: true, default: []
-            t.string :keywords, array: true, default: []
             t.string :author
             t.string :title
             t.string :year

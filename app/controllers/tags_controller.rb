@@ -7,8 +7,14 @@ class TagsController < ApplicationController
 
   def show
     tag = Tag.find_by(id: params[:id])
-    render json: tag
+    render json: tag, include: [:poems]
   end
+
+  # def show_poems
+  #   puts '***********************************'
+  #   poems = Poem.find_by(id: params[:id])
+  #   render json: tag
+  # end
 
   def create
     tag = Tag.find_or_create_by(name: params[:name])

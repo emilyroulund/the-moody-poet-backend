@@ -2,7 +2,13 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     user = User.find_by(id: params[:id])
-    render json: user
+    render json: user, include: [:favorites]
+  end
+
+  def favorites
+    user = User.find_by(id: params[:id])
+    userFavorites = user.favorites
+    render json: userFavorites
   end
 
   def create

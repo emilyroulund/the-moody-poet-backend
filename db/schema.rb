@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 2019_08_08_182615) do
 
   create_table "poems", force: :cascade do |t|
     t.string "text", default: [], array: true
-    t.string "keywords", default: [], array: true
     t.string "author"
     t.string "title"
     t.string "year"
